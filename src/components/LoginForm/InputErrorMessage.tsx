@@ -1,8 +1,19 @@
+import { ReactNode } from 'react';
 import { Text } from '@chakra-ui/react';
 
-import styles from './styles';
+type InputErrorMessageProps = {
+  show: boolean;
+  children: ReactNode;
+};
 
-export default function InputErrorMessage({ show, children }: any) {
+export default function InputErrorMessage({
+  show,
+  children,
+}: InputErrorMessageProps) {
   if (!show) return;
-  return <Text sx={styles.inputError}>{children}</Text>;
+  return (
+    <Text color="red" fontSize="16px" mt="5px" pl="24px">
+      {children}
+    </Text>
+  );
 }
