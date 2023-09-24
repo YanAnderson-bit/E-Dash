@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import {
   Box,
   Button,
@@ -11,8 +12,8 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+
 import InputErrorMessage from './InputErrorMessage';
 
 type Inputs = {
@@ -34,11 +35,7 @@ export default function LoginForm() {
       ? 'O campo email é obrigatório'
       : 'Email invalido';
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(errors);
-    if (errors) return;
-    console.log(data);
-  };
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
     <Box
@@ -67,6 +64,7 @@ export default function LoginForm() {
                 px="24px"
                 w="400px"
                 h="60px"
+                borderStyle="none"
                 borderRadius="5px"
                 bg="#f3f5f6"
                 fontSize="20px"
@@ -92,6 +90,7 @@ export default function LoginForm() {
                   px="24px"
                   w="400px"
                   h="60px"
+                  borderStyle="none"
                   borderRadius="5px"
                   bg="#f3f5f6"
                   fontSize="20px"
@@ -101,7 +100,6 @@ export default function LoginForm() {
                     required: true,
                   })}
                 />
-
                 <InputRightElement h={'full'}>
                   <Button
                     onClick={() => setShowPassword(!showPassword)}
