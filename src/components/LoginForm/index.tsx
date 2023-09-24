@@ -10,6 +10,7 @@ import {
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import styles from './styles';
+import InputErrorMessage from './InputErrorMessage';
 
 type Inputs = {
   email: string;
@@ -46,9 +47,9 @@ export default function LoginForm() {
                   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/,
               })}
             />
-            {errors.email && (
-              <Text sx={styles.inputError}>{emailErrorMessage}</Text>
-            )}
+            <InputErrorMessage show={Boolean(errors.email)}>
+              {emailErrorMessage}
+            </InputErrorMessage>
           </FormControl>
           <FormControl>
             <FormLabel sx={styles.label}>Senha</FormLabel>
@@ -60,9 +61,9 @@ export default function LoginForm() {
                 required: true,
               })}
             />
-            {errors.password && (
-              <Text sx={styles.inputError}>O campo senha é obrigatorio</Text>
-            )}
+            <InputErrorMessage show={Boolean(errors.password)}>
+              O campo senha é obrigatorio
+            </InputErrorMessage>
           </FormControl>
           <Button type="submit" sx={styles.loginButton}>
             Entrar
