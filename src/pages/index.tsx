@@ -1,7 +1,9 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
+import { Ubuntu } from 'next/font/google';
+import LoginForm from '@/components/LoginForm';
+import { Box } from '@chakra-ui/react';
 
-const inter = Inter({ subsets: ['latin'] });
+const ubuntu = Ubuntu({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
   return (
@@ -12,7 +14,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${inter.className}`}></main>
+
+      <main className={ubuntu.className}>
+        <Box display="flex" justifyContent="center">
+          <LoginForm />
+        </Box>
+      </main>
     </>
   );
 }
