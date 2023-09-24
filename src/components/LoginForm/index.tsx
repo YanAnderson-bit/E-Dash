@@ -1,15 +1,18 @@
 import Image from 'next/image';
+import { useState } from 'react';
 import {
   Box,
   Button,
   FormControl,
   FormLabel,
   Input,
+  InputGroup,
+  InputRightElement,
   Text,
   VStack,
 } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import InputErrorMessage from './InputErrorMessage';
 
 type Inputs = {
@@ -18,6 +21,8 @@ type Inputs = {
 };
 
 export default function LoginForm() {
+  const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -81,20 +86,31 @@ export default function LoginForm() {
               <FormLabel fontSize="18px" pl="24px">
                 Senha
               </FormLabel>
-              <Input
-                py="19px"
-                px="24px"
-                w="400px"
-                h="60px"
-                borderRadius="5px"
-                bg="#f3f5f6"
-                fontSize="20px"
-                type="password"
-                placeholder="Insira a senha"
-                {...register('password', {
-                  required: true,
-                })}
-              />
+              <InputGroup>
+                <Input
+                  py="19px"
+                  px="24px"
+                  w="400px"
+                  h="60px"
+                  borderRadius="5px"
+                  bg="#f3f5f6"
+                  fontSize="20px"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Insira a senha"
+                  {...register('password', {
+                    required: true,
+                  })}
+                />
+
+                <InputRightElement h={'full'}>
+                  <Button
+                    onClick={() => setShowPassword(!showPassword)}
+                    variant={'ghost'}
+                  >
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
               <InputErrorMessage show={Boolean(errors.password)}>
                 O campo senha é obrigatorio
               </InputErrorMessage>
