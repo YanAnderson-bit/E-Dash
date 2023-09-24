@@ -9,6 +9,8 @@ import {
 } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import styles from './styles';
+
 type Inputs = {
   email: string;
   password: string;
@@ -27,28 +29,16 @@ export default function LoginForm() {
       : 'Email invalido';
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
   return (
-    <Box
-      bgColor="white"
-      h="100vh"
-      w="750px"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <Box sx={styles.form}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <VStack spacing={8}>
           <FormControl>
-            <FormLabel fontSize="14px" pl="15px">
-              Email
-            </FormLabel>
+            <FormLabel sx={styles.label}>Email</FormLabel>
             <Input
-              p="15px"
-              w="300px"
-              borderRadius="5px"
-              bg="#f3f5f6"
+              sx={styles.input}
               type="text"
-              fontSize="14px"
               placeholder="Insira o email"
               {...register('email', {
                 required: true,
@@ -57,21 +47,13 @@ export default function LoginForm() {
               })}
             />
             {errors.email && (
-              <Text color="red" fontSize="14px" mt="5px" pl="15px">
-                {emailErrorMessage}
-              </Text>
+              <Text sx={styles.inputError}>{emailErrorMessage}</Text>
             )}
           </FormControl>
           <FormControl>
-            <FormLabel fontSize="14px" pl="15px">
-              Senha
-            </FormLabel>
+            <FormLabel sx={styles.label}>Senha</FormLabel>
             <Input
-              p="15px"
-              w="300px"
-              borderRadius="5px"
-              bg="#f3f5f6"
-              fontSize="14px"
+              style={styles.input}
               type="password"
               placeholder="Insira a senha"
               {...register('password', {
@@ -79,19 +61,10 @@ export default function LoginForm() {
               })}
             />
             {errors.password && (
-              <Text color="red" fontSize="14px" mt="5px" pl="15px">
-                O campo senha é obrigatorio
-              </Text>
+              <Text sx={styles.inputError}>O campo senha é obrigatorio</Text>
             )}
           </FormControl>
-          <Button
-            mt="20px"
-            w="80px"
-            h="28px"
-            type="submit"
-            color="white"
-            bgColor="#5a4ca7"
-          >
+          <Button type="submit" sx={styles.loginButton}>
             Entrar
           </Button>
         </VStack>
