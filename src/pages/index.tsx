@@ -1,11 +1,17 @@
 import Head from 'next/head';
-import { Ubuntu } from 'next/font/google';
-import LoginForm from '@/components/LoginForm';
-import { Box } from '@chakra-ui/react';
-
-const ubuntu = Ubuntu({ subsets: ['latin'], weight: '400' });
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function Home() {
+  const router = useRouter();
+  useEffect(() => {
+    const session: any = JSON.parse(localStorage.getItem('session') || '');
+    if (session.accessToken) {
+      router.push('/dashboard');
+    }
+    router.push('/login');
+  }, []);
+
   return (
     <>
       <Head>
@@ -15,11 +21,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={ubuntu.className}>
-        <Box display="flex" justifyContent="center">
-          <LoginForm />
-        </Box>
-      </main>
+      <main />
     </>
   );
 }
