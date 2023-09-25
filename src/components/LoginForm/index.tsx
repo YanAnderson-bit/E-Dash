@@ -9,12 +9,15 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Spinner,
   Text,
   VStack,
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
-import InputErrorMessage from './InputErrorMessage';
+import InputErrorMessage from './components/InputErrorMessage';
+import Api from '@/api';
+import validateLogin from './utils/validateLogin';
 
 type Inputs = {
   email: string;
@@ -22,7 +25,9 @@ type Inputs = {
 };
 
 export default function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isLoginInvalid, setIsLoginInvalid] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const {
     register,
@@ -35,7 +40,22 @@ export default function LoginForm() {
       ? 'O campo email é obrigatório'
       : 'Email invalido';
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (login) => {
+    setIsLoading(true);
+    const isLoginValid: boolean = validateLogin(login);
+    if (!isLoginValid) {
+      setIsLoading(false);
+      setIsLoginInvalid(true);
+      return;
+    }
+    Api.get('https://628bf017667aea3a3e387e51.mockapi.io/login')
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setIsLoginInvalid(false);
+        setIsLoading(false);
+      });
+  };
 
   return (
     <Box
@@ -113,17 +133,24 @@ export default function LoginForm() {
                 O campo senha é obrigatorio
               </InputErrorMessage>
             </FormControl>
-            <Button
-              borderRadius="8px"
-              type="submit"
-              marginTop="20px"
-              w="120px"
-              h="40px"
-              color="white"
-              bg="#5a4ca7"
-            >
-              Entrar
-            </Button>
+            <VStack spacing={1}>
+              <Button
+                borderRadius="8px"
+                type="submit"
+                marginTop="20px"
+                w="120px"
+                h="40px"
+                color="white"
+                bg="#5a4ca7"
+              >
+                {isLoading ? <Spinner /> : 'Entrar'}
+              </Button>
+              {isLoginInvalid && (
+                <Text color="red" fontSize="16px" mt="5px">
+                  Email ou senha inválidos
+                </Text>
+              )}
+            </VStack>
           </VStack>
         </form>
       </VStack>
