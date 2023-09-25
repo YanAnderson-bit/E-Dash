@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 export default {
-  get: (route: string): Promise<AxiosResponse<any, any>> => axios.get(route),
+  login: (): Promise<AxiosResponse<any, any>> =>
+    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/login'),
   post: (route: string): Promise<AxiosResponse<any, any>> => axios.post(route),
 };

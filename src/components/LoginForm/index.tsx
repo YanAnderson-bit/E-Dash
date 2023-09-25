@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import {
@@ -9,8 +8,6 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Spinner,
-  Text,
   VStack,
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
@@ -20,7 +17,7 @@ import Api from '@/api';
 import validateLogin from './utils/validateLogin';
 import LoginButton from './components/LoginButton';
 import FormLogo from './components/FormLogo';
-import saveSection from './utils/saveSection';
+import saveSession from './utils/saveSession';
 
 type Inputs = {
   email: string;
@@ -51,8 +48,8 @@ export default function LoginForm() {
       setIsLoginInvalid(true);
       return;
     }
-    Api.get('https://628bf017667aea3a3e387e51.mockapi.io/login')
-      .then((data) => saveSection(data))
+    Api.login()
+      .then((data) => saveSession(data))
       .catch((error) => console.log(error))
       .finally(() => {
         setIsLoginInvalid(false);

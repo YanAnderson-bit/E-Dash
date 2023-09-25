@@ -1,9 +1,9 @@
 import { AxiosResponse } from 'axios';
 
 export default (data: AxiosResponse<any, any>) => {
-  const section: any = {
+  const session: any = {
     name: 'Edu',
     accessToken: data.data['access-token'],
   };
-  localStorage.setItem('section', section);
+  localStorage.setItem('session', JSON.stringify(session));
 };
