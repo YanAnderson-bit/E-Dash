@@ -11,17 +11,4 @@ export default function Home() {
     }
     router.push('/login');
   }, []);
-
-  return (
-    <>
-      <Head>
-        <title>E-Dash</title>
-        <meta name="description" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main />
-    </>
-  );
 }

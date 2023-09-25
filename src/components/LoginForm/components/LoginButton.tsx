@@ -1,10 +1,13 @@
 import { Button, Spinner, Text, VStack } from '@chakra-ui/react';
 
-type Validators = {
+type LoginButtonProps = {
   isLoading: boolean;
   isLoginInvalid: boolean;
 };
-export default function LoginButton({ isLoading, isLoginInvalid }: Validators) {
+export default function LoginButton({
+  isLoading,
+  isLoginInvalid,
+}: LoginButtonProps) {
   return (
     <VStack spacing={1}>
       <Button

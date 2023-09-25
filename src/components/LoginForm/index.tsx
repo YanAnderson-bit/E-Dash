@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import {
-  Box,
   Button,
+  Flex,
   FormControl,
   FormLabel,
   Input,
@@ -58,8 +58,7 @@ export default function LoginForm() {
   };
 
   return (
-    <Box
-      display="flex"
+    <Flex
       alignItems="center"
       justifyContent="center"
       bg="white"
@@ -135,6 +134,6 @@ export default function LoginForm() {
           </VStack>
         </form>
       </VStack>
-    </Box>
+    </Flex>
   );
 }
