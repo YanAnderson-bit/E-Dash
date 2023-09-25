@@ -6,14 +6,14 @@ export default function Header() {
       as="nav"
       bg="white"
       w="100%"
-      h="60px"
+      h="84px"
       boxShadow="md"
       alignItems="center"
       justifyContent="space-between"
       paddingX="50px"
       paddingY="35px"
     >
-      <Image alt="logo" src="/icon.jpg" boxSize="50px" />
+      <Image alt="logo" src="/logo.svg" boxSize="69px" />
       <HStack spacing={5}>
         <Text>Yan Anderson</Text>
         <Avatar

@@ -8,6 +8,7 @@ export default function Home() {
     const session: any = JSON.parse(localStorage.getItem('session') || '');
     if (session.accessToken) {
       router.push('/dashboard');
+      return;
     }
     router.push('/login');
   }, []);

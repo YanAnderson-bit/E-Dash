@@ -1,5 +1,11 @@
-import { Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
+
+import Layout from '@/components/Layout';
 
 export default function Dashboard() {
-  return <Text>oi</Text>;
+  return (
+    <Layout>
+      <Flex>oi</Flex>
+    </Layout>
+  );
 }
