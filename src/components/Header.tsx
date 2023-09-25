@@ -1,6 +1,6 @@
 import { Avatar, Box, Flex, HStack, Image, Text } from '@chakra-ui/react';
 
-export default function Navbar() {
+export default function Header() {
   return (
     <Flex
       as="nav"
