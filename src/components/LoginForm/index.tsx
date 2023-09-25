@@ -20,6 +20,7 @@ import Api from '@/api';
 import validateLogin from './utils/validateLogin';
 import LoginButton from './components/LoginButton';
 import FormLogo from './components/FormLogo';
+import saveSection from './utils/saveSection';
 
 type Inputs = {
   email: string;
@@ -51,7 +52,7 @@ export default function LoginForm() {
       return;
     }
     Api.get('https://628bf017667aea3a3e387e51.mockapi.io/login')
-      .then((data) => console.log(data))
+      .then((data) => saveSection(data))
       .catch((error) => console.log(error))
       .finally(() => {
         setIsLoginInvalid(false);
