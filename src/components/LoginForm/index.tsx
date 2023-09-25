@@ -18,6 +18,8 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import InputErrorMessage from './components/InputErrorMessage';
 import Api from '@/api';
 import validateLogin from './utils/validateLogin';
+import LoginButton from './components/LoginButton';
+import FormLogo from './components/FormLogo';
 
 type Inputs = {
   email: string;
@@ -67,12 +69,7 @@ export default function LoginForm() {
       w="894px"
     >
       <VStack spacing={20}>
-        <VStack spacing={10}>
-          <Image alt="logo" src="/logo.svg" height={226} width={264}></Image>
-          <Text fontWeight="700" fontSize="24px">
-            Entrar na plataforma
-          </Text>
-        </VStack>
+        <FormLogo />
         <form onSubmit={handleSubmit(onSubmit)}>
           <VStack spacing={8}>
             <FormControl>
@@ -133,24 +130,10 @@ export default function LoginForm() {
                 O campo senha é obrigatorio
               </InputErrorMessage>
             </FormControl>
-            <VStack spacing={1}>
-              <Button
-                borderRadius="8px"
-                type="submit"
-                marginTop="20px"
-                w="120px"
-                h="40px"
-                color="white"
-                bg="#5a4ca7"
-              >
-                {isLoading ? <Spinner /> : 'Entrar'}
-              </Button>
-              {isLoginInvalid && (
-                <Text color="red" fontSize="16px" mt="5px">
-                  Email ou senha inválidos
-                </Text>
-              )}
-            </VStack>
+            <LoginButton
+              isLoading={isLoading}
+              isLoginInvalid={isLoginInvalid}
+            />
           </VStack>
         </form>
       </VStack>
