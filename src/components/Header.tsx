@@ -1,6 +1,8 @@
 import { Avatar, Box, Flex, HStack, Image, Text } from '@chakra-ui/react';
 
 export default function Header() {
+  const session: any = JSON.parse(localStorage.getItem('session') || '');
+
   return (
     <Flex
       as="nav"
@@ -15,12 +17,12 @@ export default function Header() {
     >
       <Image alt="logo" src="/logo.svg" boxSize="69px" />
       <HStack spacing={5}>
-        <Text>Yan Anderson</Text>
+        <Text>{session.name}</Text>
         <Avatar
           fontWeight="bold"
           color="#52606c"
           bg="#a49ccc"
-          name="Yan Anderson"
+          name={session.name}
         />
       </HStack>
     </Flex>
