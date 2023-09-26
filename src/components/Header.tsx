@@ -1,7 +1,8 @@
-import { Avatar, Box, Flex, HStack, Image, Text } from '@chakra-ui/react';
+import { useAuthenticationContext } from '@/providers/AuthenticationProvider';
+import { Avatar, Flex, HStack, Image, Text } from '@chakra-ui/react';
 
 export default function Header() {
-  const session: any = JSON.parse(localStorage.getItem('session') || '');
+  const { user } = useAuthenticationContext();
 
   return (
     <Flex
@@ -15,14 +16,14 @@ export default function Header() {
       paddingX="50px"
       paddingY="35px"
     >
-      <Image alt="logo" src="/logo.svg" boxSize="69px" />
+      <Image alt="logo" src="/svgs/logo.svg" boxSize="69px" />
       <HStack spacing={5}>
-        <Text>{session.name}</Text>
+        <Text>{user?.name}</Text>
         <Avatar
           fontWeight="bold"
           color="#52606c"
           bg="#a49ccc"
-          name={session.name}
+          name={user?.name}
         />
       </HStack>
     </Flex>
