@@ -13,7 +13,7 @@ export default function Layout({ children }: LayoutProps) {
     <Box
       className={ubuntu.className}
       bgColor="#F6F6F9"
-      bgImage="/background.png"
+      bgImage="/images/background.png"
     >
       {children}
     </Box>

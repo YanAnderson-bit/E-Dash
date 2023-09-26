@@ -8,7 +8,7 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <Box bgColor="#F6F6F9" bgImage="/background.png">
+    <Box bgColor="#F6F6F9" bgImage="/images/background.png">
       <Header />
       {children}
     </Box>

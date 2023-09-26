@@ -16,7 +16,7 @@ export default function Header() {
       paddingX="50px"
       paddingY="35px"
     >
-      <Image alt="logo" src="/logo.svg" boxSize="69px" />
+      <Image alt="logo" src="/svgs/logo.svg" boxSize="69px" />
       <HStack spacing={5}>
         <Text>{user?.name}</Text>
         <Avatar
