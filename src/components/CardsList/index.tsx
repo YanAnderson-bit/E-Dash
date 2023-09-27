@@ -1,4 +1,4 @@
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { useState } from 'react';
 
 import DailyTicket from './components/DailyTicket';
@@ -10,13 +10,24 @@ import SoldProducts from './components/SoldProducts';
 
 export default function CardsList() {
   return (
-    <SimpleGrid columns={6} spacing={6}>
-      <DailyTicket />
-      <MonthlyTicket />
-      <MaintainceTicket />
-      <ProductsRemaining />
-      <RequestedProducts />
-      <SoldProducts />
-    </SimpleGrid>
+    <>
+      <Heading
+        pl="30px"
+        py="20px"
+        color="#4E5D66"
+        fontSize="28px"
+        fontWeight="700"
+      >
+        Início
+      </Heading>
+      <SimpleGrid columns={6} spacing={6}>
+        <DailyTicket />
+        <MonthlyTicket />
+        <MaintainceTicket />
+        <ProductsRemaining />
+        <RequestedProducts />
+        <SoldProducts />
+      </SimpleGrid>
+    </>
   );
 }

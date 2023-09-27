@@ -14,4 +14,10 @@ export default {
   post: (route: string): Promise<AxiosResponse<any, any>> => axios.post(route),
   getSalesPerMonth: (): Promise<AxiosResponse<any, any>> =>
     axios.get('https://628bf017667aea3a3e387e51.mockapi.io/sells-per-month'),
+  getExpectatedProfitPerMonth: (): Promise<AxiosResponse<any, any>> =>
+    axios.get(
+      'https://628bf017667aea3a3e387e51.mockapi.io/profit-expectation-per-month'
+    ),
+  getRealProfitPerMonth: (): Promise<AxiosResponse<any, any>> =>
+    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/profit-per-month'),
 };

@@ -14,7 +14,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import Filter from './Filter';
+import Filter from '../../Filter';
 
 ChartJS.register(
   CategoryScale,
@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-export default function MonthlyOrders() {
+export default function MonthlyOrdersDashboard() {
   const [sales, setSales] = useState<any>([]);
   const data: any = {
     labels,

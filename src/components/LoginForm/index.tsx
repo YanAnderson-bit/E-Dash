@@ -58,13 +58,13 @@ export default function LoginForm() {
       .finally(() => {
         setIsLoginInvalid(false);
         setIsLoading(false);
-        router.push('/dashboard');
+        router.push('/home');
       });
   };
 
   useEffect(() => {
     if (user) {
-      router.push('/dashboard');
+      router.push('/home');
     }
   }, [user]);
   return (
