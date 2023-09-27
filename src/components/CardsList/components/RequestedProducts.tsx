@@ -12,7 +12,7 @@ export default function RequestedProducts() {
     : '#109E8E';
 
   useEffect(() => {
-    Api.getOrderedProducts()
+    Api.getMonthOrderedProducts()
       .then(({ data }) => setRequestedProducts(data))
       .catch((error) => console.log(error));
   }, []);
