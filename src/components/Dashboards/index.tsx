@@ -5,7 +5,7 @@ import ProfitDashboard from './ProfitDashboard';
 export default function Dashboards() {
   return (
     <>
-      <Box my="20px">
+      <Box mt="20px" mb="10px">
         <Heading
           fontWeight="bold"
           pl="30px"
