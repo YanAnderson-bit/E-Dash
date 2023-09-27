@@ -10,15 +10,13 @@ import SoldProducts from './components/SoldProducts';
 
 export default function CardsList() {
   return (
-    <Box w="90%">
-      <SimpleGrid columns={6} spacing={0}>
-        <DailyTicket />
-        <MonthlyTicket />
-        <MaintainceTicket />
-        <ProductsRemaining />
-        <RequestedProducts />
-        <SoldProducts />
-      </SimpleGrid>
-    </Box>
+    <SimpleGrid columns={6} spacing={6}>
+      <DailyTicket />
+      <MonthlyTicket />
+      <MaintainceTicket />
+      <ProductsRemaining />
+      <RequestedProducts />
+      <SoldProducts />
+    </SimpleGrid>
   );
 }
