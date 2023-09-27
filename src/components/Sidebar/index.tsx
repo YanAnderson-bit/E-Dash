@@ -9,16 +9,9 @@ import {
 import MenuButton from './components/MenuButton';
 import SidebarIconButton from './components/SidebarIconButton';
 import { PiHouseSimpleBold } from 'react-icons/pi';
-import { useRouter } from 'next/router';
 import { PiStack } from 'react-icons/pi';
 import { BsTruck } from 'react-icons/bs';
 export default function Sidebar() {
-  const router = useRouter();
-
-  const onClickHome = () => router.push('/dashboard');
-  const onClickStack = () => router.push('/form');
-  const onClickTruck = () => router.push('/map');
-
   return (
     <Flex
       bg="white"
@@ -36,11 +29,11 @@ export default function Sidebar() {
           <AccordionPanel>
             <VStack spacing={5}>
               <SidebarIconButton
-                onClick={onClickHome}
+                href="/dashboard"
                 icon={<PiHouseSimpleBold />}
               />
-              <SidebarIconButton onClick={onClickStack} icon={<PiStack />} />
-              <SidebarIconButton onClick={onClickTruck} icon={<BsTruck />} />
+              <SidebarIconButton href="/form" icon={<PiStack />} />
+              <SidebarIconButton href="/map" icon={<BsTruck />} />
             </VStack>
           </AccordionPanel>
         </AccordionItem>
