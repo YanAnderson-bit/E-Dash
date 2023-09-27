@@ -1,6 +1,7 @@
 import { Box, HStack, Heading } from '@chakra-ui/react';
 import MonthlyOrdersDashboard from './MonthlyOrderDashboard/MonthlyOrders';
 import ProfitDashboard from './ProfitDashboard';
+import OrderedAndCanceledDasboard from './OrderedAndCanceledDashboard';
 
 export default function Dashboards() {
   return (
@@ -19,6 +20,7 @@ export default function Dashboards() {
       <HStack spacing={10}>
         <MonthlyOrdersDashboard />
         <ProfitDashboard />
+        <OrderedAndCanceledDasboard />
       </HStack>
     </>
   );

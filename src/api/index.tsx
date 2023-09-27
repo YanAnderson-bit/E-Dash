@@ -9,7 +9,7 @@ export default {
     axios.get('https://628bf017667aea3a3e387e51.mockapi.io/avg-ticket-month'),
   getAlertProducts: (): Promise<AxiosResponse<any, any>> =>
     axios.get('https://628bf017667aea3a3e387e51.mockapi.io/alerts'),
-  getOrderedProducts: (): Promise<AxiosResponse<any, any>> =>
+  getMonthOrderedProducts: (): Promise<AxiosResponse<any, any>> =>
     axios.get('https://628bf017667aea3a3e387e51.mockapi.io/orders-month'),
   post: (route: string): Promise<AxiosResponse<any, any>> => axios.post(route),
   getSalesPerMonth: (): Promise<AxiosResponse<any, any>> =>
@@ -20,4 +20,10 @@ export default {
     ),
   getRealProfitPerMonth: (): Promise<AxiosResponse<any, any>> =>
     axios.get('https://628bf017667aea3a3e387e51.mockapi.io/profit-per-month'),
+  getOrdersPerMonth: (): Promise<AxiosResponse<any, any>> =>
+    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/orders-per-month'),
+  getCanceledOrdersPerMonth: (): Promise<AxiosResponse<any, any>> =>
+    axios.get(
+      'https://628bf017667aea3a3e387e51.mockapi.io/canceled-orders-per-month'
+    ),
 };
