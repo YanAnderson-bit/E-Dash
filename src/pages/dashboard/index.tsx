@@ -1,6 +1,6 @@
 import CardsList from '@/components/CardsList';
 import Layout from '@/components/Layout';
-import { Box, Flex, Heading, VStack } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 
 export default function Dashboard() {
   return (
