@@ -1,14 +1,15 @@
 import '@/styles/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 
 import Layout from './Layout';
-import Head from 'next/head';
 import AuthenticationProvider from '@/providers/AuthenticationProvider';
+import fontTheme from '@/theme/fontTheme';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={fontTheme}>
       <AuthenticationProvider>
         <Layout>
           <Head>
