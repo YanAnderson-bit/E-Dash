@@ -1,3 +1,4 @@
+import FormInput from '@/components/FormInput';
 import {
   FormControl,
   FormLabel,
@@ -9,28 +10,28 @@ import {
 
 export default function Especifications() {
   return (
-    <HStack w="100%" alignItems="flex-start" spacing={40}>
-      <VStack w="100%" spacing={10} alignItems="flex-start">
-        <Text color="#333333" fontSize="18px">
-          Especificações
-        </Text>
-        <FormControl>
-          <VStack color="primmary.input" spacing={5} alignItems="flex-start">
-            <HStack justifyContent="space-between" w="100%">
-              <FormLabel>Subtítulo:</FormLabel>
-              <Input border="none" bg="#F3F5F6" type="string" />
-            </HStack>
-            <HStack justifyContent="space-between" w="100%">
-              <FormLabel>Informações:</FormLabel>
-              <Input border="none" bg="#F3F5F6" type="text" />
-            </HStack>
-            <HStack justifyContent="space-between" w="100%">
-              <FormLabel>Limpeza e cudados:</FormLabel>
-              <Input border="none" w="95%" bg="#F3F5F6" type="string" />
-            </HStack>
-          </VStack>
-        </FormControl>
-      </VStack>
-    </HStack>
+    <VStack w="100%" spacing={10} alignItems="flex-start">
+      <Text color="#333333" fontSize="18px">
+        Especificações
+      </Text>
+      <FormControl>
+        <VStack color="primmary.input" spacing={5} alignItems="flex-start">
+          <HStack gap={10} w="100%">
+            <FormLabel>Subtítulo:</FormLabel>
+            <FormInput w="1522px" />
+          </HStack>
+          <HStack gap={4} w="100%">
+            <FormLabel>Informações:</FormLabel>
+            <FormInput w="1522px" h="84px" />
+          </HStack>
+          <HStack gap={7} w="100%">
+            <FormLabel w="80px" h="42px">
+              Limpeza e cudados:
+            </FormLabel>
+            <FormInput w="1522px" h="84px" />
+          </HStack>
+        </VStack>
+      </FormControl>
+    </VStack>
   );
 }
