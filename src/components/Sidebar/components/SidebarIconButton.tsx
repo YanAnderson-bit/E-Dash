@@ -16,7 +16,7 @@ export default function SidebarIconButton({
       <IconButton
         bg="none"
         fontSize="22px"
-        aria-label="Form"
+        aria-label="SidebarButton"
         icon={icon}
         _hover={{ bg: '#5A4CA7', color: 'white' }}
       />
