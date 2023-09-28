@@ -28,11 +28,8 @@ export default function Sidebar() {
           </h2>
           <AccordionPanel>
             <VStack spacing={5}>
-              <SidebarIconButton
-                href="/dashboard"
-                icon={<PiHouseSimpleBold />}
-              />
-              <SidebarIconButton href="/form" icon={<PiStack />} />
+              <SidebarIconButton href="/home" icon={<PiHouseSimpleBold />} />
+              <SidebarIconButton href="/products" icon={<PiStack />} />
               <SidebarIconButton href="/map" icon={<BsTruck />} />
             </VStack>
           </AccordionPanel>
