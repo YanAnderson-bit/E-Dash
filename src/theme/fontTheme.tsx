@@ -11,6 +11,12 @@ const fontTheme = extendTheme({
     body: ubuntu.style.fontFamily,
     heading: ubuntu.style.fontFamily,
   },
+  colors: {
+    primmary: {
+      input: '#4E5D66',
+      bgInput: '#F3F5F6',
+    },
+  },
 });
 
 export default fontTheme;
