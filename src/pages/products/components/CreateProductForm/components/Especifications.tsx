@@ -3,8 +3,8 @@ import {
   FormControl,
   FormLabel,
   HStack,
-  Input,
   Text,
+  Textarea,
   VStack,
 } from '@chakra-ui/react';
 
@@ -18,17 +18,17 @@ export default function Especifications() {
         <VStack color="primmary.input" spacing={5} alignItems="flex-start">
           <HStack gap={10} w="100%">
             <FormLabel>Subtítulo:</FormLabel>
-            <FormInput w="1522px" />
+            <FormInput />
           </HStack>
           <HStack gap={4} w="100%">
             <FormLabel>Informações:</FormLabel>
-            <FormInput w="1522px" h="84px" />
+            <Textarea bg="primmary.bgInput" border="none" borderRadius="9px" />
           </HStack>
-          <HStack gap={7} w="100%">
+          <HStack gap={9} w="100%">
             <FormLabel w="80px" h="42px">
               Limpeza e cudados:
             </FormLabel>
-            <FormInput w="1522px" h="84px" />
+            <Textarea bg="primmary.bgInput" border="none" borderRadius="9px" />
           </HStack>
         </VStack>
       </FormControl>
