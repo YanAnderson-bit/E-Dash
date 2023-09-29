@@ -3,17 +3,16 @@ import { ValidationRule, useFormContext } from 'react-hook-form';
 
 type FormInputProps = {
   name: string;
-  isRequired?: boolean;
+  required?: boolean;
   pattern?: ValidationRule<RegExp> | undefined;
 } & InputProps;
 
 export default function FormInput({
-  isRequired = false,
+  required = false,
   pattern = undefined,
   ...props
 }: FormInputProps) {
   const { register } = useFormContext();
-  console.log(props.name);
   return (
     <Input
       border="none"
@@ -21,7 +20,7 @@ export default function FormInput({
       bg="#F3F5F6"
       type="string"
       {...props}
-      {...register(props.name, { required: isRequired, pattern })}
+      {...register(props.name, { required: required, pattern })}
     />
   );
 }
