@@ -1,9 +1,10 @@
 import Layout from '@/components/Layout';
 import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import CreateProductForm from './components/CreateProductForm';
-import Header from './components/CreateProductForm/components/Header';
+import Header from './components/Header';
 import CreateItemForm from './components/CreateItemForm';
 import { FormProvider, useForm } from 'react-hook-form';
+import Api from '@/api';
 
 type Form = {
   code: string;
@@ -21,7 +22,11 @@ type Form = {
 
 export default function ProductsPage() {
   const formMethods = useForm<Form>();
-  const onSubmit = (data: any): void => console.log(data);
+  const onSubmit = (product: any): Promise<void> =>
+    Api.createProduct(product)
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+
   return (
     <Layout>
       <Box mt="20px" pb="2rem">
