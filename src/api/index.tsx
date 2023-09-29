@@ -11,7 +11,7 @@ export default {
     axios.get('https://628bf017667aea3a3e387e51.mockapi.io/alerts'),
   getMonthOrderedProducts: (): Promise<AxiosResponse<any, any>> =>
     axios.get('https://628bf017667aea3a3e387e51.mockapi.io/orders-month'),
-  post: (route: string): Promise<AxiosResponse<any, any>> => axios.post(route),
+
   getSalesPerMonth: (): Promise<AxiosResponse<any, any>> =>
     axios.get('https://628bf017667aea3a3e387e51.mockapi.io/sells-per-month'),
   getExpectatedProfitPerMonth: (): Promise<AxiosResponse<any, any>> =>
@@ -25,5 +25,10 @@ export default {
   getCanceledOrdersPerMonth: (): Promise<AxiosResponse<any, any>> =>
     axios.get(
       'https://628bf017667aea3a3e387e51.mockapi.io/canceled-orders-per-month'
+    ),
+  createProduct: (product: any): Promise<AxiosResponse<any, any>> =>
+    axios.post(
+      'https://628bf017667aea3a3e387e51.mockapi.io/create-product',
+      product
     ),
 };

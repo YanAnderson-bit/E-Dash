@@ -10,8 +10,10 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import FormInput from '@/components/FormInput';
+import { useFormContext } from 'react-hook-form';
 
 export default function CreateItemForm() {
+  const { register } = useFormContext();
   return (
     <Box mt="2rem" bg="white" p="40px" borderRadius="20px">
       <VStack alignItems="flex-start" spacing={4}>
@@ -34,7 +36,7 @@ export default function CreateItemForm() {
         <VStack spacing={15}>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>Código:</FormLabel>
-            <FormInput name="code2" w="20rem" h="37px" />
+            <FormInput name="items.0.code" w="20rem" h="37px" />
           </HStack>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>Cor:</FormLabel>
@@ -45,6 +47,7 @@ export default function CreateItemForm() {
               w="20rem"
               h="37px"
               color="primmary.input"
+              {...register('items.0.color')}
             >
               <option value="color 1">color1</option>
               <option value="color 2">color2</option>
@@ -53,11 +56,11 @@ export default function CreateItemForm() {
           </HStack>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>Tamanho:</FormLabel>
-            <FormInput name="widht1" w="3.7rem" h="2.5rem" />
+            <FormInput name="items.0.size.width1" w="3.7rem" h="2.5rem" />
             <FormLabel>m x</FormLabel>
-            <FormInput name="widht2" w="3.7rem" h="2.5rem" />
+            <FormInput name="items.0.size.width2" w="3.7rem" h="2.5rem" />
             <FormLabel>m x</FormLabel>
-            <FormInput name="widht3" w="3.7rem" h="2.5rem" />
+            <FormInput name="items.0.size.width3" w="3.7rem" h="2.5rem" />
             <FormLabel>m</FormLabel>
           </HStack>
         </VStack>
