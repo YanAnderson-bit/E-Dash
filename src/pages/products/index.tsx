@@ -6,7 +6,7 @@ import Header from './components/CreateProductForm/components/Header';
 export default function ProductsPage() {
   return (
     <Layout>
-      <Box w="1736px" mt="20px">
+      <Box mt="20px">
         <Header />
         <CreateProductForm />
       </Box>

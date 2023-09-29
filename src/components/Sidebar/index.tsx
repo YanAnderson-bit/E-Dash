@@ -18,7 +18,7 @@ export default function Sidebar() {
       justifyContent="center"
       boxShadow="lg"
       borderRadius="8px"
-      mx="20px"
+      mx="30px"
       mt="20px"
     >
       <Accordion allowToggle>
