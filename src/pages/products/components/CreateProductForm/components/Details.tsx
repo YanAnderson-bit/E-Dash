@@ -11,23 +11,23 @@ export default function Details() {
         <VStack color="primmary.input" spacing={5} alignItems="flex-start">
           <HStack gap={10} justifyContent="space-between" w="100%">
             <FormLabel>Nome:</FormLabel>
-            <FormInput w="300" h="37px" />
+            <FormInput w="20rem" h="37px" />
           </HStack>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>ID:</FormLabel>
-            <FormInput w="300" h="37px" />
+            <FormInput w="20rem" h="37px" />
           </HStack>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>Código:</FormLabel>
-            <FormInput w="300" h="37px" />
+            <FormInput w="20rem" h="37px" />
           </HStack>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>Seller:</FormLabel>
-            <FormInput w="300" h="37px" />
+            <FormInput w="20rem" h="37px" />
           </HStack>
           <HStack justifyContent="space-between">
             <FormLabel>Prazo de entrega:</FormLabel>
-            <FormInput w="300" h="37px" />
+            <FormInput w="20rem" h="37px" />
           </HStack>
         </VStack>
       </FormControl>

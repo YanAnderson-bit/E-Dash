@@ -6,7 +6,7 @@ import Dashboards from '@/components/Dashboards';
 export default function Home() {
   return (
     <Layout>
-      <Box mt="20px">
+      <Box w="90%" mt="20px">
         <CardsList />
         <Dashboards />
       </Box>
