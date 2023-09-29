@@ -7,7 +7,7 @@ import CreateItemForm from './components/CreateItemForm';
 export default function ProductsPage() {
   return (
     <Layout>
-      <Box mt="20px">
+      <Box mt="20px" pb="2rem">
         <Header />
         <CreateProductForm />
         <CreateItemForm />
