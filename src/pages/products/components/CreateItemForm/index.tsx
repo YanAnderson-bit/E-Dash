@@ -34,7 +34,7 @@ export default function CreateItemForm() {
         <VStack spacing={15}>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>Código:</FormLabel>
-            <FormInput w="20rem" h="37px" />
+            <FormInput name="code2" w="20rem" h="37px" />
           </HStack>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>Cor:</FormLabel>
@@ -53,11 +53,11 @@ export default function CreateItemForm() {
           </HStack>
           <HStack justifyContent="space-between" w="100%">
             <FormLabel>Tamanho:</FormLabel>
-            <FormInput w="3.7rem" h="2.5rem" />
+            <FormInput name="widht1" w="3.7rem" h="2.5rem" />
             <FormLabel>m x</FormLabel>
-            <FormInput w="3.7rem" h="2.5rem" />
+            <FormInput name="widht2" w="3.7rem" h="2.5rem" />
             <FormLabel>m x</FormLabel>
-            <FormInput w="3.7rem" h="2.5rem" />
+            <FormInput name="widht3" w="3.7rem" h="2.5rem" />
             <FormLabel>m</FormLabel>
           </HStack>
         </VStack>
