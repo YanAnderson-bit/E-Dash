@@ -36,10 +36,20 @@ export default function ProductsPage() {
             <CreateProductForm />
             <CreateItemForm />
             <Flex justifyContent="flex-end" gap={5} mt="3rem">
-              <Button bg="#ebebeb" w="5rem">
-                <Text color="#333333">Cancelar</Text>
+              <Button borderRadius="8px" bg="#ebebeb" w="7rem">
+                <Text fontWeight="500" color="#333333">
+                  Cancelar
+                </Text>
               </Button>
-              <Button type="submit">Criar</Button>
+              <Button
+                borderRadius="8px"
+                w="7rem"
+                fontWeight="500"
+                bg="#C0D7E5"
+                type="submit"
+              >
+                Criar
+              </Button>
             </Flex>
           </form>
         </FormProvider>
