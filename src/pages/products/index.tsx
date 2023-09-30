@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, useToast } from '@chakra-ui/react';
 import CreateProductForm from './components/CreateProductForm';
 import Header from './components/Header';
 import CreateItemForm from './components/CreateItemForm';
@@ -21,11 +21,26 @@ type Form = {
 };
 
 export default function ProductsPage() {
+  const toast = useToast();
   const formMethods = useForm<Form>();
-  const onSubmit = (product: any): Promise<void> =>
-    Api.createProduct(product)
+  const onSubmit = (product: any): void => {
+    const createProductPromise = Api.createProduct(product)
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
+    toast.promise(createProductPromise, {
+      success: {
+        title: 'Produto criado com sucesso',
+        duration: 9000,
+        isClosable: true,
+      },
+      error: {
+        title: 'Ocorreu uma falha ao criar o produto',
+        duration: 9000,
+        isClosable: true,
+      },
+      loading: { title: 'Criando produto...' },
+    });
+  };
 
   return (
     <Layout>
@@ -36,7 +51,7 @@ export default function ProductsPage() {
             <CreateProductForm />
             <CreateItemForm />
             <Flex justifyContent="flex-end" gap={5} mt="3rem">
-              <Button borderRadius="8px" bg="#ebebeb" w="7rem">
+              <Button h="2.2rem" borderRadius="8px" bg="#ebebeb" w="7rem">
                 <Text fontWeight="500" color="#333333">
                   Cancelar
                 </Text>
@@ -44,6 +59,7 @@ export default function ProductsPage() {
               <Button
                 borderRadius="8px"
                 w="7rem"
+                h="2.2rem"
                 fontWeight="500"
                 bg="#C0D7E5"
                 type="submit"
