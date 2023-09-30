@@ -1,5 +1,6 @@
 import { useAuthenticationContext } from '@/providers/AuthenticationProvider';
 import { Avatar, Flex, HStack, Image, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 
 export default function Header() {
   const { user } = useAuthenticationContext();
@@ -16,7 +17,9 @@ export default function Header() {
       paddingX="50px"
       paddingY="35px"
     >
-      <Image alt="logo" src="/svgs/logo.svg" boxSize="69px" />
+      <Link href="/home">
+        <Image alt="logo" src="/svgs/logo.svg" boxSize="69px" />
+      </Link>
       <HStack spacing={5}>
         <Text>{user?.name}</Text>
         <Avatar

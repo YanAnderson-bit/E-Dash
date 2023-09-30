@@ -19,7 +19,7 @@ export default function Sidebar() {
       justifyContent="center"
       boxShadow="lg"
       borderRadius="8px"
-      mx="20px"
+      mx="30px"
       mt="20px"
     >
       <Accordion allowToggle>
@@ -29,11 +29,8 @@ export default function Sidebar() {
           </h2>
           <AccordionPanel>
             <VStack spacing={5}>
-              <SidebarIconButton
-                href="/dashboard"
-                icon={<PiHouseSimpleBold />}
-              />
-              <SidebarIconButton href="/form" icon={<PiStack />} />
+              <SidebarIconButton href="/home" icon={<PiHouseSimpleBold />} />
+              <SidebarIconButton href="/products" icon={<PiStack />} />
               <SidebarIconButton href="/map" icon={<BsTruck />} />
             </VStack>
           </AccordionPanel>

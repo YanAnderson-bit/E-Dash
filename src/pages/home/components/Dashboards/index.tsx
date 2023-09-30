@@ -5,7 +5,7 @@ import OrderedAndCanceledDasboard from './OrderedAndCanceledDashboard';
 
 export default function Dashboards() {
   return (
-    <>
+    <Box overflow="hidden">
       <Box mt="20px" mb="10px">
         <Heading
           fontWeight="bold"
@@ -17,11 +17,11 @@ export default function Dashboards() {
           Dashboard de vendas
         </Heading>
       </Box>
-      <HStack spacing={10}>
+      <HStack pb="1rem" overflow="auto" spacing={10}>
         <MonthlyOrdersDashboard />
         <ProfitDashboard />
         <OrderedAndCanceledDasboard />
       </HStack>
-    </>
+    </Box>
   );
 }

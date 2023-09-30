@@ -20,7 +20,7 @@ export default function CardsList() {
       >
         Início
       </Heading>
-      <SimpleGrid w="85%" columns={6} spacing={0}>
+      <SimpleGrid w="85%" columns={6} spacing={20}>
         <DailyTicket />
         <MonthlyTicket />
         <MaintainceTicket />
