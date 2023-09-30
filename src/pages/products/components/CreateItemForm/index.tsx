@@ -17,7 +17,6 @@ export default function CreateItemForm() {
   const { register } = useFormContext();
   const { fields, append, remove } = useFieldArray({ name: 'items' });
 
-  console.log(fields);
   return (
     <Box mt="2rem" bg="white" p="40px" borderRadius="20px">
       <VStack alignItems="flex-start" spacing={4}>

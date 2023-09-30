@@ -48,7 +48,6 @@ export default function ProductsPage() {
     },
   });
   const onSubmit = (product: any): void => {
-    console.log(product);
     const createProductPromise = Api.createProduct(product)
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
