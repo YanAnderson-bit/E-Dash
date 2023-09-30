@@ -17,13 +17,38 @@ type Form = {
   categories: string[];
   tags: string[];
   id: string;
-  items: Array<Object>;
+  items: {
+    code: string | undefined;
+    color: string | undefined;
+    size: {
+      width: string | undefined;
+      height: string | undefined;
+      length: string | undefined;
+    };
+  }[];
 };
 
 export default function ProductsPage() {
   const toast = useToast();
-  const formMethods = useForm<Form>();
+  const formMethods = useForm<Form>({
+    defaultValues: {
+      code: '',
+      productId: '',
+      seller: '',
+      deliveryDate: '',
+      specificationsSubtitle: '',
+      specificationsInfo: '',
+      specificationsCare: '',
+      categories: [],
+      tags: [],
+      id: '',
+      items: [
+        { code: '', color: '', size: { width: '', height: '', length: '' } },
+      ],
+    },
+  });
   const onSubmit = (product: any): void => {
+    console.log(product);
     const createProductPromise = Api.createProduct(product)
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
