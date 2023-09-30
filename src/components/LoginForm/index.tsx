@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import {
   Button,
@@ -18,6 +19,7 @@ import validateLogin from './utils/validateLogin';
 import LoginButton from './components/LoginButton';
 import FormLogo from './components/FormLogo';
 import saveSession from './utils/saveSession';
+import { useAuthenticationContext } from '@/providers/AuthenticationProvider';
 
 type Inputs = {
   email: string;
@@ -28,6 +30,8 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoginInvalid, setIsLoginInvalid] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
+  const { user } = useAuthenticationContext();
 
   const {
     register,
@@ -54,9 +58,15 @@ export default function LoginForm() {
       .finally(() => {
         setIsLoginInvalid(false);
         setIsLoading(false);
+        router.push('/home');
       });
   };
 
+  useEffect(() => {
+    if (user) {
+      router.push('/home');
+    }
+  }, [user]);
   return (
     <Flex
       alignItems="center"
