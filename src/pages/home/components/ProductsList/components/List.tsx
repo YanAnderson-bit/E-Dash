@@ -27,7 +27,7 @@ export default function List({ data, query, onChangePage }: ListProps) {
   const LIMIT: number = 7;
   const PRODUCTS_QUANTITY = 58;
   const pages: number = Math.ceil(PRODUCTS_QUANTITY / LIMIT);
-  console.log(pages);
+
   return (
     <TableContainer overflowX="hidden">
       <Table size="lg">

@@ -22,7 +22,7 @@ export default function ProductsList() {
 
   useEffect(() => {
     api
-      .getProductsList(query)
+      .getProductsList({ ...query, search })
       .then(({ data }) => setProducts(data))
       .catch((error) => console.log(error));
   }, [query, search]);
@@ -33,7 +33,12 @@ export default function ProductsList() {
         <Heading as="h2" size="lg" fontWeight="400" color="#333333">
           Listagem de Produtos
         </Heading>
-        <SearchBar onChange={setSearch} />
+        <SearchBar
+          onChange={(e: any) => {
+            setSearch(e.target.value);
+            onChangePage({ page: 1 });
+          }}
+        />
       </HStack>
       <List data={products} query={query} onChangePage={onChangePage} />
     </Box>

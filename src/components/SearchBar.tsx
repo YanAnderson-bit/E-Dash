@@ -4,19 +4,16 @@ import {
   InputGroup,
   InputRightElement,
 } from '@chakra-ui/react';
+import { ChangeEventHandler } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 type SearchBarProps = {
-  onChange: Function;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 export default function SearchBar({ onChange }: SearchBarProps) {
   return (
     <InputGroup w="fit-content" size="lg">
-      <Input
-        onChange={(e) => onChange(e.target.value)}
-        type="text"
-        placeholder="Pesquisar produtos"
-      />
+      <Input onChange={onChange} type="text" placeholder="Pesquisar produtos" />
       <InputRightElement>
         <IconButton
           icon={<AiOutlineSearch />}
