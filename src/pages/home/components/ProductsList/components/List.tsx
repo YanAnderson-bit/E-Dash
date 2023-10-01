@@ -20,9 +20,15 @@ type ListProps = {
   data: any[];
   query: any;
   onChangePage: Function;
+  hidePagination: boolean;
 };
 
-export default function List({ data, query, onChangePage }: ListProps) {
+export default function List({
+  data,
+  query,
+  onChangePage,
+  hidePagination,
+}: ListProps) {
   if (!data) return <Loading />;
   const LIMIT: number = 7;
   const PRODUCTS_QUANTITY = 58;
@@ -64,7 +70,7 @@ export default function List({ data, query, onChangePage }: ListProps) {
           })}
         </Tbody>
       </Table>
-      <Flex mt="3rem" justifyContent="flex-end">
+      <Flex hidden={hidePagination} mt="2rem" justifyContent="flex-end">
         <HStack justifyContent="space-between" spacing={5}>
           <Text color="primmary.input">
             {query.page} de {pages}

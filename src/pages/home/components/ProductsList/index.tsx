@@ -1,6 +1,6 @@
 import api from '@/api';
 import { Box, HStack, Heading } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import SearchBar from '@/components/SearchBar';
 import List from './components/List';
 
@@ -13,6 +13,7 @@ export default function ProductsList() {
   const [products, setProducts] = useState<any>([]);
   const [query, setQuery] = useState<Query>({ page: 1, limit: 7 });
   const [search, setSearch] = useState<string>('');
+  const hidePagination = Boolean(search);
 
   const onChangePage = (value: any) => {
     setQuery((currentQuery: Query) => {
@@ -21,8 +22,11 @@ export default function ProductsList() {
   };
 
   useEffect(() => {
+    const params = hidePagination
+      ? { page: query.page, search }
+      : { ...query, search };
     api
-      .getProductsList({ ...query, search })
+      .getProductsList(params)
       .then(({ data }) => setProducts(data))
       .catch((error) => console.log(error));
   }, [query, search]);
@@ -40,7 +44,12 @@ export default function ProductsList() {
           }}
         />
       </HStack>
-      <List data={products} query={query} onChangePage={onChangePage} />
+      <List
+        hidePagination={hidePagination}
+        data={products}
+        query={query}
+        onChangePage={onChangePage}
+      />
     </Box>
   );
 }
