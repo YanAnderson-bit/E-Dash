@@ -29,20 +29,20 @@ export default function List({ data, query, onChangePage }: ListProps) {
   const pages: number = Math.ceil(PRODUCTS_QUANTITY / LIMIT);
 
   return (
-    <TableContainer overflowX="hidden">
+    <TableContainer sx={{ whiteSpace: 'wrap' }}>
       <Table size="lg">
         <Thead>
           <Tr>
-            <Th bg="#4E5D66" color="white" borderRadius="8px">
+            <Th bg="#4E5D66" color="white" borderLeftRadius="8px">
               PRODUTO
             </Th>
-            <Th bg="#4E5D66" color="white" borderRadius="8px">
+            <Th bg="#4E5D66" color="white">
               CORES
             </Th>
-            <Th bg="#4E5D66" color="white" borderRadius="8px">
+            <Th bg="#4E5D66" color="white">
               ESPECIFICAÇÕES
             </Th>
-            <Th bg="#4E5D66" color="white" borderRadius="8px">
+            <Th bg="#4E5D66" color="white" borderRightRadius="8px">
               STATUS
             </Th>
           </Tr>
@@ -51,9 +51,13 @@ export default function List({ data, query, onChangePage }: ListProps) {
           {data.map((item) => {
             return (
               <Tr key={item.id}>
-                <Td fontSize="16px">{item.name}</Td>
+                <Td p="2.2rem" fontSize="16px">
+                  {item.name}
+                </Td>
                 <Td fontSize="16px">{item.color}</Td>
-                <Td fontSize="16px">{item.description}</Td>
+                <Td w="43rem" fontSize="16px">
+                  {item.description}
+                </Td>
                 <Td fontSize="16px">{item.status}</Td>
               </Tr>
             );
