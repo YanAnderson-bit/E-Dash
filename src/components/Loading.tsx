@@ -1,8 +1,8 @@
-import { Flex, Spinner } from '@chakra-ui/react';
+import { Flex, FlexProps, Spinner } from '@chakra-ui/react';
 
-export default function Loading() {
+export default function Loading(props: FlexProps) {
   return (
-    <Flex justifyContent="center" alignItems="center">
+    <Flex justifyContent="center" alignItems="center" {...props}>
       <Spinner />
     </Flex>
   );

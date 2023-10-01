@@ -21,6 +21,7 @@ type ListProps = {
   query: any;
   onChangePage: Function;
   hidePagination: boolean;
+  isLoading: boolean;
 };
 
 export default function List({
@@ -28,12 +29,12 @@ export default function List({
   query,
   onChangePage,
   hidePagination,
+  isLoading,
 }: ListProps) {
-  if (!data) return <Loading />;
+  if (isLoading) return <Loading h="20rem" />;
   const LIMIT: number = 7;
   const PRODUCTS_QUANTITY = 58;
   const pages: number = Math.ceil(PRODUCTS_QUANTITY / LIMIT);
-
   return (
     <TableContainer sx={{ whiteSpace: 'wrap' }}>
       <Table size="lg">

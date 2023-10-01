@@ -1,34 +1,46 @@
 import api from '@/api';
 import { Box, HStack, Heading } from '@chakra-ui/react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchBar from '@/components/SearchBar';
 import List from './components/List';
-
+import lodash from 'lodash';
 type Query = {
   page: number;
   limit: number;
 };
+const debouncedLoadProductsList = lodash.debounce(
+  (queryParams, resolve, reject, onEnd) => {
+    return api
+      .getProductsList(queryParams)
+      .then(resolve)
+      .catch(reject)
+      .finally(onEnd);
+  },
+  300
+);
 
 export default function ProductsList() {
   const [products, setProducts] = useState<any>([]);
   const [query, setQuery] = useState<Query>({ page: 1, limit: 7 });
   const [search, setSearch] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const hidePagination = Boolean(search);
-
   const onChangePage = (value: any) => {
     setQuery((currentQuery: Query) => {
       return { ...currentQuery, ...value };
     });
   };
+  const onResolve = ({ data }: any) => setProducts(data);
+  const onReject = (error: any) => console.log(error);
 
   useEffect(() => {
+    setIsLoading(true);
     const params = hidePagination
       ? { page: query.page, search }
       : { ...query, search };
-    api
-      .getProductsList(params)
-      .then(({ data }) => setProducts(data))
-      .catch((error) => console.log(error));
+    debouncedLoadProductsList(params, onResolve, onReject, () =>
+      setIsLoading(false)
+    );
   }, [query, search]);
 
   return (
@@ -45,6 +57,7 @@ export default function ProductsList() {
         />
       </HStack>
       <List
+        isLoading={isLoading}
         hidePagination={hidePagination}
         data={products}
         query={query}
