@@ -1,28 +1,41 @@
 import api from '@/api';
 import { Box, HStack, Heading } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import SearchBar from '../SearchBar';
+import SearchBar from '@/components/SearchBar';
 import List from './components/List';
+
+type Query = {
+  page: number;
+  limit: number;
+};
 
 export default function ProductsList() {
   const [products, setProducts] = useState<any>([]);
+  const [query, setQuery] = useState<Query>({ page: 1, limit: 7 });
   const [search, setSearch] = useState<string>('');
+
+  const onChangePage = (value: any) => {
+    setQuery((currentQuery: Query) => {
+      return { ...currentQuery, ...value };
+    });
+  };
+
   useEffect(() => {
     api
-      .getProductsList()
+      .getProductsList(query)
       .then(({ data }) => setProducts(data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [query, search]);
 
   return (
-    <Box bg="white" p="30px" mt="70px" borderRadius="20px">
-      <HStack justifyContent="space-between">
+    <Box bg="white" p="2rem" mt="3rem" borderRadius="20px">
+      <HStack justifyContent="space-between" mb="2.5rem">
         <Heading as="h2" size="lg" fontWeight="400" color="#333333">
           Listagem de Produtos
         </Heading>
         <SearchBar onChange={setSearch} />
       </HStack>
-      <List data={products} />
+      <List data={products} query={query} onChangePage={onChangePage} />
     </Box>
   );
 }
