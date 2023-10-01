@@ -69,11 +69,13 @@ export default function List({ data, query, onChangePage }: ListProps) {
             <IconButton
               hidden={query.page === 1}
               aria-label="leftPage"
+              fontWeight="700"
               onClick={() => onChangePage({ page: query.page - 1 })}
               icon={<AiOutlineLeft />}
             />
             <IconButton
               aria-label="rightPage"
+              fontWeight="700"
               onClick={() => onChangePage({ page: query.page + 1 })}
               icon={<AiOutlineRight />}
               hidden={query.page === pages}
