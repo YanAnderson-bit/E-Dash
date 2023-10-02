@@ -26,6 +26,10 @@ export default {
     axios.get(
       'https://628bf017667aea3a3e387e51.mockapi.io/canceled-orders-per-month'
     ),
+  getProductsList: (query: any): Promise<AxiosResponse<any, any>> =>
+    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/products', {
+      params: query,
+    }),
   createProduct: (product: any): Promise<AxiosResponse<any, any>> =>
     axios.post(
       'https://628bf017667aea3a3e387e51.mockapi.io/create-product',

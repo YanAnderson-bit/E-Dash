@@ -42,16 +42,14 @@ export default function CreateItemForm() {
               <Text color="#333333" fontSize="16px">
                 Item {index + 1}
               </Text>
-              <Box borderWidth="0.1rem" w={index !== 0 ? '90%' : '95%'} />
-              {index !== 0 && (
-                <IconButton
-                  size="lg"
-                  bg="none"
-                  aria-label="closeItem"
-                  icon={<IoCloseOutline />}
-                  onClick={() => remove(index)}
-                />
-              )}
+              <Box borderWidth="0.1rem" w="90%" />
+              <IconButton
+                size="lg"
+                bg="none"
+                aria-label="closeItem"
+                icon={<IoCloseOutline />}
+                onClick={() => remove(index)}
+              />
             </HStack>
 
             <HStack key={item.id} alignItems="flex-start" spacing={20}>

@@ -10,11 +10,7 @@ export default function MenuButton() {
       }}
       p="25px"
     >
-      <Icon
-        fontSize="22px"
-        aria-label="Search database"
-        as={HiOutlineMenuAlt2}
-      />
+      <Icon fontSize="22px" aria-label="menu" as={HiOutlineMenuAlt2} />
     </AccordionButton>
   );
 }

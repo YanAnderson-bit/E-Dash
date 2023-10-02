@@ -42,9 +42,7 @@ export default function ProductsPage() {
       categories: [],
       tags: [],
       id: '',
-      items: [
-        { code: '', color: '', size: { width: '', height: '', length: '' } },
-      ],
+      items: [],
     },
   });
   const onSubmit = (product: any): void => {
