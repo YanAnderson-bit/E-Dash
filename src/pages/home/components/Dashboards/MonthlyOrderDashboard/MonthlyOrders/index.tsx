@@ -1,6 +1,4 @@
-import Api from '@/api';
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
 import options from './config/options';
 import labels from './config/labels';
 
@@ -15,6 +13,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import Filter from '../../Filter';
+import { useHomeContext } from '@/providers/HomeProvider';
 
 ChartJS.register(
   CategoryScale,
@@ -26,24 +25,18 @@ ChartJS.register(
 );
 
 export default function MonthlyOrdersDashboard() {
-  const [sales, setSales] = useState<any>([]);
+  const { dashboards } = useHomeContext();
   const data: any = {
     labels,
     datasets: [
       {
-        data: sales?.map((item: any) => item?.value),
+        data: dashboards.ordersPerMonthResult?.map((item: any) => item?.value),
         backgroundColor: '#393C56',
         borderRadius: 3,
         categoryPercentage: 0.5,
       },
     ],
   };
-
-  useEffect(() => {
-    Api.getSalesPerMonth()
-      .then(({ data }) => setSales(data))
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <Box bg="white" w="600px" h="400px" mt="20px" borderRadius="12px" p="10px">

@@ -1,21 +1,15 @@
-import Api from '@/api';
+import { useHomeContext } from '@/providers/HomeProvider';
 
 import { Box, Card, CardBody, HStack, Heading, Text } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
 
 export default function RequestedProducts() {
-  const [requestedProducts, setRequestedProducts] = useState<any>({});
+  const { cards } = useHomeContext();
 
-  const hasGrowthDecreased: boolean = requestedProducts?.growth < 0;
+  const hasGrowthDecreased: boolean = cards.monthOrderedResult?.growth < 0;
   const informationTextColor: string = hasGrowthDecreased
     ? '#D6628E'
     : '#109E8E';
 
-  useEffect(() => {
-    Api.getMonthOrderedProducts()
-      .then(({ data }) => setRequestedProducts(data))
-      .catch((error) => console.log(error));
-  }, []);
   return (
     <Card w="240px" px="15px">
       <Heading pt="20px" color="#4E5D66" size="sm">
@@ -32,7 +26,7 @@ export default function RequestedProducts() {
           bg="white"
         >
           <Text fontSize="12px" color={informationTextColor} fontWeight="bold">
-            + {requestedProducts.growth}%
+            + {cards.monthOrderedResult?.growth}%
           </Text>
         </Box>
 
@@ -41,7 +35,7 @@ export default function RequestedProducts() {
         </Text>
         <HStack color="#4E5D66" my="10px">
           <Text fontWeight="bold" fontSize="20px">
-            {requestedProducts.value}
+            {cards.monthOrderedResult?.value}
           </Text>
           <Text fontSize="16px">Produtos</Text>
         </HStack>

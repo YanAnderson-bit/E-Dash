@@ -1,5 +1,4 @@
-import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Heading, SimpleGrid } from '@chakra-ui/react';
 
 import DailyTicket from './components/DailyTicket';
 import MonthlyTicket from './components/MonthlyTicket';

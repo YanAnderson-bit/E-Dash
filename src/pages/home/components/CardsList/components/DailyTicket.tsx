@@ -1,24 +1,14 @@
-import Api from '@/api';
+import { useHomeContext } from '@/providers/HomeProvider';
 import formatPrice from '@/utils/formatPrice';
 
 import { Box, Card, CardBody, HStack, Heading, Text } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
 
 export default function DailyTicket() {
-  const [dailyAverageTicket, setDailyAverageTicket] = useState<any>({});
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const hasGrowthDecreased: boolean = dailyAverageTicket?.growth < 0;
+  const { cards } = useHomeContext();
+  const hasGrowthDecreased: boolean = cards.dailyAverageResults?.growth < 0;
   const informationTextColor: string = hasGrowthDecreased
     ? '#D6628E'
     : '#109E8E';
-
-  useEffect(() => {
-    setIsLoading(true);
-    Api.getDailyAverageTicket()
-      .then(({ data }) => setDailyAverageTicket(data))
-      .then(() => setIsLoading(false))
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <Card w="240px" px="15px">
@@ -36,7 +26,7 @@ export default function DailyTicket() {
           bg="white"
         >
           <Text fontSize="12px" color={informationTextColor} fontWeight="bold">
-            + {dailyAverageTicket.growth}%
+            + {cards.dailyAverageResults?.growth}%
           </Text>
         </Box>
 
@@ -46,7 +36,7 @@ export default function DailyTicket() {
         <HStack color="#4E5D66" my="10px">
           <Text fontSize="16px">R$</Text>
           <Text fontWeight="bold" fontSize="20px">
-            {formatPrice(dailyAverageTicket.value).replace('R$', '')}
+            {formatPrice(cards.dailyAverageResults?.value).replace('R$', '')}
           </Text>
         </HStack>
       </CardBody>
