@@ -29,14 +29,13 @@ export default function AuthenticationProvider({
   children,
 }: AuthenticationProviderProps) {
   const [user, setUser] = useState<any>(null);
-
+  const cookies = parseCookies();
+  const session: string | null = cookies.session;
   useEffect(() => {
-    const cookies = parseCookies();
-    const session: string | null = cookies.session;
     if (session) {
       setUser(JSON.parse(session));
     }
-  }, []);
+  }, [cookies.session]);
 
   return (
     <AuthenticationContext.Provider value={{ user }}>
