@@ -1,9 +1,10 @@
 import { AxiosResponse } from 'axios';
+import { setCookie } from 'nookies';
 
 export default (data: AxiosResponse<any, any>) => {
   const session: any = {
-    name: 'Edu',
+    name: 'Yan',
     accessToken: data.data['access-token'],
   };
-  localStorage.setItem('session', JSON.stringify(session));
+  setCookie(null, 'session', JSON.stringify(session));
 };

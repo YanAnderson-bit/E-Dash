@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import {
   Button,
@@ -15,11 +15,9 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 import InputErrorMessage from './components/InputErrorMessage';
 import Api from '@/api';
-import validateLogin from './utils/validateLogin';
 import LoginButton from './components/LoginButton';
 import FormLogo from './components/FormLogo';
 import saveSession from './utils/saveSession';
-import { useAuthenticationContext } from '@/providers/AuthenticationProvider';
 
 type Inputs = {
   email: string;
@@ -31,7 +29,6 @@ export default function LoginForm() {
   const [isLoginInvalid, setIsLoginInvalid] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
-  const { user } = useAuthenticationContext();
 
   const {
     register,
@@ -44,29 +41,18 @@ export default function LoginForm() {
       ? 'O campo email é obrigatório'
       : 'Email invalido';
 
-  const onSubmit: SubmitHandler<Inputs> = (login) => {
+  const onSubmit: SubmitHandler<Inputs> = () => {
     setIsLoading(true);
-    const isLoginValid: boolean = validateLogin(login);
-    if (!isLoginValid) {
-      setIsLoading(false);
-      setIsLoginInvalid(true);
-      return;
-    }
     Api.login()
       .then((data) => saveSession(data))
       .catch((error) => console.log(error))
       .finally(() => {
         setIsLoginInvalid(false);
         setIsLoading(false);
-        router.push('/home');
+        router.push('/');
       });
   };
 
-  useEffect(() => {
-    if (user) {
-      router.push('/home');
-    }
-  }, [user]);
   return (
     <Flex
       alignItems="center"

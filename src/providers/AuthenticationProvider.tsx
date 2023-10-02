@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { parseCookies } from 'nookies';
 
 type AuthenticationProviderProps = {
   children: ReactNode;
@@ -30,7 +31,8 @@ export default function AuthenticationProvider({
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    const session: string | null = localStorage.getItem('session');
+    const cookies = parseCookies();
+    const session: string | null = cookies.session;
     if (session) {
       setUser(JSON.parse(session));
     }

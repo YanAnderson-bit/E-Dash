@@ -1,38 +1,32 @@
 import axios, { AxiosResponse } from 'axios';
 
+const API_ROUTE: string | undefined = process.env['NEXT_PUBLIC_API_KEY'];
+
 export default {
   login: (): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/login'),
+    axios.get(`${API_ROUTE}/login`),
   getDailyAverageTicket: (): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/avg-ticket-day'),
+    axios.get(`${API_ROUTE}/avg-ticket-day`),
   getMonthlyAverageTicket: (): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/avg-ticket-month'),
+    axios.get(`${API_ROUTE}/avg-ticket-month`),
   getAlertProducts: (): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/alerts'),
+    axios.get(`${API_ROUTE}/alerts`),
   getMonthOrderedProducts: (): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/orders-month'),
-
+    axios.get(`${API_ROUTE}/orders-month`),
   getSalesPerMonth: (): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/sells-per-month'),
+    axios.get(`${API_ROUTE}/sells-per-month`),
   getExpectatedProfitPerMonth: (): Promise<AxiosResponse<any, any>> =>
-    axios.get(
-      'https://628bf017667aea3a3e387e51.mockapi.io/profit-expectation-per-month'
-    ),
+    axios.get(`${API_ROUTE}/profit-expectation-per-month`),
   getRealProfitPerMonth: (): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/profit-per-month'),
+    axios.get(`${API_ROUTE}/profit-per-month`),
   getOrdersPerMonth: (): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/orders-per-month'),
+    axios.get(`${API_ROUTE}/orders-per-month`),
   getCanceledOrdersPerMonth: (): Promise<AxiosResponse<any, any>> =>
-    axios.get(
-      'https://628bf017667aea3a3e387e51.mockapi.io/canceled-orders-per-month'
-    ),
+    axios.get(`${API_ROUTE}/canceled-orders-per-month`),
   getProductsList: (query: any): Promise<AxiosResponse<any, any>> =>
-    axios.get('https://628bf017667aea3a3e387e51.mockapi.io/products', {
+    axios.get(`${API_ROUTE}/products`, {
       params: query,
     }),
   createProduct: (product: any): Promise<AxiosResponse<any, any>> =>
-    axios.post(
-      'https://628bf017667aea3a3e387e51.mockapi.io/create-product',
-      product
-    ),
+    axios.post(`${API_ROUTE}/create-product`, product),
 };
