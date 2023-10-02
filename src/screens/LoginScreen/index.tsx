@@ -1,8 +1,8 @@
 import { Flex } from '@chakra-ui/react';
 
-import LoginForm from '@/components/LoginForm';
+import LoginForm from './components/LoginForm';
 
-export default function Login() {
+export default function LoginScreen() {
   return (
     <Flex justifyContent="center">
       <LoginForm />
