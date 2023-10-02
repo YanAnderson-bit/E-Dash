@@ -1,10 +1,5 @@
-import Layout from '@/components/Layout';
-import { Box } from '@chakra-ui/react';
+import MapScreen from '@/screens/MapScreen';
 
 export default function Map() {
-  return (
-    <Layout>
-      <Box></Box>
-    </Layout>
-  );
+  return <MapScreen />;
 }
