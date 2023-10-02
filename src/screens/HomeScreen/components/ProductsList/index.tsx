@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react';
 import SearchBar from '@/components/SearchBar';
 import List from './components/List';
 import lodash from 'lodash';
+import { useAuthenticationContext } from '@/providers/AuthenticationProvider';
 type Query = {
   page: number;
   limit: number;
 };
 const debouncedLoadProductsList = lodash.debounce(
-  (queryParams, resolve, reject, onEnd) => {
+  (config, resolve, reject, onEnd) => {
     return api
-      .getProductsList(queryParams)
+      .getProductsList(config)
       .then(resolve)
       .catch(reject)
       .finally(onEnd);
@@ -20,11 +21,13 @@ const debouncedLoadProductsList = lodash.debounce(
 );
 
 export default function ProductsList() {
+  const { user } = useAuthenticationContext();
   const [products, setProducts] = useState<any>([]);
   const [query, setQuery] = useState<Query>({ page: 1, limit: 7 });
   const [search, setSearch] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const hidePagination = Boolean(search);
+
   const onChangePage = (value: any) => {
     setQuery((currentQuery: Query) => {
       return { ...currentQuery, ...value };
@@ -38,7 +41,8 @@ export default function ProductsList() {
     const params = hidePagination
       ? { page: query.page, search }
       : { ...query, search };
-    debouncedLoadProductsList(params, onResolve, onReject, () =>
+    const headers = { Authorization: `Bearer  ${user?.accessToken}` };
+    debouncedLoadProductsList({ params, headers }, onResolve, onReject, () =>
       setIsLoading(false)
     );
   }, [query, search]);

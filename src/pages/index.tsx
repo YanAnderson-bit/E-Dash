@@ -1,9 +1,16 @@
-import { GetServerSideProps } from 'next';
+import { NextPageContext } from 'next';
 import Api from '@/api';
 import HomeProvider from '@/providers/HomeProvider';
 import HomeScreen from '@/screens/HomeScreen';
+import nookies from 'nookies';
 
-export const getServerSideProps = async (context: GetServerSideProps) => {
+export const getServerSideProps = async (
+  context: Pick<NextPageContext, 'req'>
+) => {
+  const session: any = JSON.parse(nookies.get(context).session);
+  const config: any = {
+    headers: { Authorization: `Bearer ${session.accessToken}` },
+  };
   const [
     monthOrderedResult,
     monthlyAverageTicketsResults,
@@ -15,15 +22,15 @@ export const getServerSideProps = async (context: GetServerSideProps) => {
     ordersPerMonthResult,
     salesPerMonthResult,
   ] = await Promise.allSettled([
-    Api.getMonthOrderedProducts(),
-    Api.getMonthlyAverageTicket(),
-    Api.getAlertProducts(),
-    Api.getDailyAverageTicket(),
-    Api.getExpectatedProfitPerMonth(),
-    Api.getRealProfitPerMonth(),
-    Api.getCanceledOrdersPerMonth(),
-    Api.getOrdersPerMonth(),
-    Api.getSalesPerMonth(),
+    Api.getMonthOrderedProducts(config),
+    Api.getMonthlyAverageTicket(config),
+    Api.getAlertProducts(config),
+    Api.getDailyAverageTicket(config),
+    Api.getExpectatedProfitPerMonth(config),
+    Api.getRealProfitPerMonth(config),
+    Api.getCanceledOrdersPerMonth(config),
+    Api.getOrdersPerMonth(config),
+    Api.getSalesPerMonth(config),
   ]);
 
   return {

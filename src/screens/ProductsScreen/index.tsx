@@ -5,6 +5,7 @@ import Header from './components/Header';
 import CreateItemForm from './components/CreateItemForm';
 import { FormProvider, useForm } from 'react-hook-form';
 import Api from '@/api';
+import { useAuthenticationContext } from '@/providers/AuthenticationProvider';
 
 type Form = {
   code: string;
@@ -45,8 +46,12 @@ export default function ProductsScreen() {
       items: [],
     },
   });
+  const { user } = useAuthenticationContext();
   const onSubmit = (product: any): void => {
-    const createProductPromise = Api.createProduct(product)
+    const config = {
+      headers: { Authorization: `Bearer  ${user?.accessToken}` },
+    };
+    const createProductPromise = Api.createProduct(product, config)
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
     toast.promise(createProductPromise, {
