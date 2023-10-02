@@ -2,8 +2,8 @@ import { Box, Flex, Heading } from '@chakra-ui/react';
 import options from './config/options';
 import labels from './config/labels';
 
+import chart from 'chart.js/auto';
 import {
-  Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -18,7 +18,7 @@ import { Bar } from 'react-chartjs-2';
 import Filter from '../Filter';
 import { useHomeContext } from '@/providers/HomeProvider';
 
-ChartJS.register(
+chart.register(
   PointElement,
   LineElement,
   BarController,
