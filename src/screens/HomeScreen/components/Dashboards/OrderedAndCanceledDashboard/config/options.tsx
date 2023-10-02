@@ -3,7 +3,7 @@ export default {
   plugins: {
     legend: {
       display: true,
-      align: 'start',
+      align: 'start' as any,
       labels: {
         font: {
           weight: '500',

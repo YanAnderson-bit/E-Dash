@@ -4,7 +4,7 @@ export default {
     legend: {
       reverse: true,
       display: true,
-      align: 'start',
+      align: 'start' as any,
       labels: {
         font: {
           weight: '500',
