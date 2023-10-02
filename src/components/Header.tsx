@@ -17,7 +17,7 @@ export default function Header() {
       paddingX="50px"
       paddingY="35px"
     >
-      <Link href="/home">
+      <Link href="/">
         <Image alt="logo" src="/svgs/logo.svg" boxSize="69px" />
       </Link>
       <HStack spacing={5}>
