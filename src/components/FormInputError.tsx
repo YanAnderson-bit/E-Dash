@@ -3,11 +3,9 @@ import { ReactNode } from 'react';
 
 type FormInputErrorProps = {
   children: ReactNode;
-  show: boolean;
 } & TextProps;
 
 export default function FormInputError({
-  show,
   children,
   ...props
 }: FormInputErrorProps) {

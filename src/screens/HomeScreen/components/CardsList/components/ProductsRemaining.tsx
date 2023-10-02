@@ -8,9 +8,9 @@ export default function ProductsRemaining() {
 
   const daysRemaining = useCallback(() => {
     const date1 = new Date(cards.alertResults[1]?.since);
-    var date2 = new Date();
-    var differenceInTime = date2.getTime() - date1.getTime();
-    var differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    const date2 = new Date();
+    const differenceInTime = date2.getTime() - date1.getTime();
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
     return Math.round(differenceInDays);
   }, []);
 

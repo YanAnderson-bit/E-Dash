@@ -27,7 +27,7 @@ export default function Category() {
           <option value="option3">Option 3</option>
         </Select>
         {errors.categories && (
-          <FormInputError fontSize="0.8rem" show>
+          <FormInputError fontSize="0.8rem">
             Insira a categoria do produto
           </FormInputError>
         )}

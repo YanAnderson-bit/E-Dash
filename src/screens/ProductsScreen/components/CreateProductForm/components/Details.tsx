@@ -21,7 +21,7 @@ export default function Details() {
               <FormInput required name="name" w="20rem" />
             </HStack>
             {errors.name && (
-              <FormInputError fontSize="0.8rem" ml="6.5rem" show>
+              <FormInputError fontSize="0.8rem" ml="6.5rem">
                 Insira o nome do produto
               </FormInputError>
             )}
@@ -32,7 +32,7 @@ export default function Details() {
               <FormInput required name="productId" w="20rem" />
             </HStack>
             {errors.productId && (
-              <FormInputError fontSize="0.8rem" ml="6.5rem" show>
+              <FormInputError fontSize="0.8rem" ml="6.5rem">
                 Insira o ID do produto
               </FormInputError>
             )}
@@ -43,7 +43,7 @@ export default function Details() {
               <FormInput required name="code" w="20rem" />
             </HStack>
             {errors.code && (
-              <FormInputError fontSize="0.8rem" ml="6.5rem" show>
+              <FormInputError fontSize="0.8rem" ml="6.5rem">
                 Insira o código do produto
               </FormInputError>
             )}
@@ -54,7 +54,7 @@ export default function Details() {
               <FormInput required name="seller" w="20rem" />
             </HStack>
             {errors.seller && (
-              <FormInputError fontSize="0.8rem" ml="6.5rem" show>
+              <FormInputError fontSize="0.8rem" ml="6.5rem">
                 Insira o seller do produto
               </FormInputError>
             )}
@@ -65,7 +65,7 @@ export default function Details() {
               <FormInput required name="deliveryDate" w="20rem" />
             </HStack>
             {errors.deliveryDate && (
-              <FormInputError fontSize="0.8rem" ml="6.5rem" show>
+              <FormInputError fontSize="0.8rem" ml="6.5rem">
                 Insira o prazo de entrega do produto
               </FormInputError>
             )}

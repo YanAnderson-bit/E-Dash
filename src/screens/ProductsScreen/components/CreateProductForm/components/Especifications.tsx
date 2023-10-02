@@ -21,7 +21,7 @@ export default function Especifications() {
               <FormInput required name="specificationsSubtitle" />
             </HStack>
             {errors.specificationsSubtitle && (
-              <FormInputError fontSize="0.8rem" ml="8rem" show>
+              <FormInputError fontSize="0.8rem" ml="8rem">
                 Insira o subtitulo do produto
               </FormInputError>
             )}
@@ -32,7 +32,7 @@ export default function Especifications() {
               <FormTextarea name="specificationsInfo" required />
             </HStack>
             {errors.specificationsInfo && (
-              <FormInputError fontSize="0.8rem" ml="8rem" show>
+              <FormInputError fontSize="0.8rem" ml="8rem">
                 Insira as especificações do produto
               </FormInputError>
             )}
@@ -45,7 +45,7 @@ export default function Especifications() {
               <FormTextarea required name="specificationsCares" />
             </HStack>
             {errors.specificationsCares && (
-              <FormInputError fontSize="0.8rem" ml="8rem" show>
+              <FormInputError fontSize="0.8rem" ml="8rem">
                 Insira limpezas e cuidados do produto
               </FormInputError>
             )}

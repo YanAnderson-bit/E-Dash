@@ -27,7 +27,7 @@ export default function Tag() {
           <option value="option3">Option 3</option>
         </Select>
         {errors.tags && (
-          <FormInputError fontSize="0.8rem" show>
+          <FormInputError fontSize="0.8rem">
             Insira a tag do produto
           </FormInputError>
         )}

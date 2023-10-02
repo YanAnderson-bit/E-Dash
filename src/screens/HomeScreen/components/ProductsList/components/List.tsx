@@ -1,7 +1,5 @@
 import Loading from '@/components/Loading';
 import {
-  Box,
-  Button,
   Flex,
   HStack,
   IconButton,
@@ -19,7 +17,7 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 type ListProps = {
   data: any[];
   query: any;
-  onChangePage: Function;
+  onChangePage: (value: any) => void;
   hidePagination: boolean;
   isLoading: boolean;
 };

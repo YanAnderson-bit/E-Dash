@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const defaultPriceFormat = { style: 'currency', currency: 'BRL' };
 
 export default (

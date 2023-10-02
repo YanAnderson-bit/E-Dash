@@ -18,6 +18,7 @@ export default function FormTextarea({
       bg="primmary.bgInput"
       border="none"
       borderRadius="9px"
+      {...props}
     />
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Input, InputProps } from '@chakra-ui/react';
+import { Input, InputProps } from '@chakra-ui/react';
 import { ValidationRule, useFormContext } from 'react-hook-form';
 
 type FormInputProps = {

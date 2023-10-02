@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosResponse } from 'axios';
 
 const API_ROUTE: string | undefined = process.env['NEXT_PUBLIC_API_KEY'];
