@@ -28,7 +28,7 @@ type Form = {
   }[];
 };
 
-export default function ProductsPage() {
+export default function ProductsScreen() {
   const toast = useToast();
   const formMethods = useForm<Form>({
     defaultValues: {

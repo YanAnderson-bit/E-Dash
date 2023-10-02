@@ -1,11 +1,7 @@
-import Layout from '@/components/Layout';
-import { Box } from '@chakra-ui/react';
-import CardsList from './home/components/CardsList';
-import Dashboards from './home/components/Dashboards';
-import ProductsList from './home/components/ProductsList';
 import { GetServerSideProps } from 'next';
 import Api from '@/api';
 import HomeProvider from '@/providers/HomeProvider';
+import HomeScreen from '@/screens/HomeScreen';
 
 export const getServerSideProps = async (context: GetServerSideProps) => {
   const [
@@ -76,14 +72,8 @@ export const getServerSideProps = async (context: GetServerSideProps) => {
 
 export default function Home(props: any) {
   return (
-    <Layout>
-      <Box w="100%" mt="20px">
-        <HomeProvider data={props}>
-          <CardsList />
-          <Dashboards />
-          <ProductsList />
-        </HomeProvider>
-      </Box>
-    </Layout>
+    <HomeProvider data={props}>
+      <HomeScreen />
+    </HomeProvider>
   );
 }
