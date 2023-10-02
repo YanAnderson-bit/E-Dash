@@ -26,10 +26,8 @@ export default {
     axios.get(`${API_ROUTE}/orders-per-month`, config),
   getCanceledOrdersPerMonth: (config: any): Promise<AxiosResponse<any, any>> =>
     axios.get(`${API_ROUTE}/canceled-orders-per-month`, config),
-  getProductsList: (config: any): Promise<AxiosResponse<any, any>> => {
-    console.log(config);
-    return axios.get(`${API_ROUTE}/products`, config);
-  },
+  getProductsList: (config: any): Promise<AxiosResponse<any, any>> =>
+    axios.get(`${API_ROUTE}/products`, config),
   createProduct: (
     product: any,
     config: any
