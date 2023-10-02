@@ -7,7 +7,7 @@ import Dashboards from './components/Dashboards';
 export default function HomeScreen() {
   return (
     <Layout>
-      <Box w="100%" mt="20px">
+      <Box maxW="90%" mt="20px">
         <CardsList />
         <Dashboards />
         <ProductsList />

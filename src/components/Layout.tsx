@@ -11,7 +11,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <Box bgColor="#F6F6F9" bgImage="/images/background.png">
       <Header />
-      <HStack maxW="87%" alignItems="flex-start" spacing={10}>
+      <HStack maxW="100vw" alignItems="flex-start">
         <Sidebar />
         {children}
       </HStack>

@@ -19,7 +19,7 @@ export default function CardsList() {
       >
         Início
       </Heading>
-      <SimpleGrid columns={6} spacing={1}>
+      <SimpleGrid columns={{ base: 2, lg: 3, xl: 4, '2xl': 6 }} spacing={3}>
         <DailyTicket />
         <MonthlyTicket />
         <MaintainceTicket />
