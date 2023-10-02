@@ -1,6 +1,4 @@
-import Api from '@/api';
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
 import options from './config/options';
 import labels from './config/labels';
 
@@ -15,6 +13,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import Filter from '../Filter';
+import { useHomeContext } from '@/providers/HomeProvider';
 
 ChartJS.register(
   CategoryScale,
@@ -26,37 +25,29 @@ ChartJS.register(
 );
 
 export default function OrderedAndCanceledDasboard() {
-  const [orders, setOrders] = useState<any>([]);
-  const [canceledOrders, setCanceledOrders] = useState<any>([]);
+  const { dashboards } = useHomeContext();
 
   const data: any = {
     labels,
     datasets: [
       {
         label: 'Realizados',
-        data: orders?.map((item: any) => item?.value),
+        data: dashboards.ordersPerMonthResult?.map((item: any) => item?.value),
         backgroundColor: '#109E8E',
         borderRadius: 3,
         order: 1,
       },
       {
         label: 'Cancelados',
-        data: canceledOrders?.map((item: any) => item?.value),
+        data: dashboards.canceledOrdersPerMonthResult?.map(
+          (item: any) => item?.value
+        ),
         backgroundColor: '#F18F7F',
         borderRadius: 3,
         order: 2,
       },
     ],
   };
-
-  useEffect(() => {
-    Api.getOrdersPerMonth()
-      .then(({ data }) => setOrders(data))
-      .catch((error) => console.log(error));
-    Api.getCanceledOrdersPerMonth()
-      .then(({ data }) => setCanceledOrders(data))
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <Box bg="white" w="600px" h="400px" mt="20px" borderRadius="12px" p="10px">
